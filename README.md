@@ -21,7 +21,7 @@
 ### 注意事项
 
 1. STM32CubeMX配置界面中的i2c地址为**7位**，HAL库函数中为**8位**。另外要注意区分十进制、十六进制。
-2. STM32CubeMX v5.x 为避免`HAL_SYSTICK_Callback()`执行时间超过1ms或产生循环依赖时出现阻塞，默认不调用`HAL_SYSTICK_IRQHandler()`，并不是bug。。需要在 `SysTick_Handler()` 中的用户段手动增加 `HAL_SYSTICK_IRQHandler()` 。
+2. STM32CubeMX v5.x 为避免`HAL_SYSTICK_Callback()`执行时间超过1ms或产生循环依赖时出现阻塞，默认不调用`HAL_SYSTICK_IRQHandler()`，并不是bug。需要在 `SysTick_Handler()` 中的用户段手动增加 `HAL_SYSTICK_IRQHandler()` 。
 
 ### 实现功能
 
