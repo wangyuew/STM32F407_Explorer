@@ -65,6 +65,20 @@ void userShellInit(void)
 }
 
 
+// both RESET and BOOT0 are connected and influenced by CH340G.
+// can't reset through this USART port.
+#if 0
+static void reset(void)
+{
+    // HAL_NVIC_DisableIRQ(USART1_IRQn);
+    // __disable_irq();
+    HAL_NVIC_SystemReset();
+}
+
+SHELL_EXPORT_CMD(SHELL_CMD_PERMISSION(0)|SHELL_CMD_TYPE(SHELL_TYPE_CMD_FUNC), reset, reset, reset MCU);
+#endif
+
+
 // ported from i2c-tools/tools/i2cdetect.c
 static void i2cdetect(uint8_t bus_num)
 {
@@ -156,4 +170,6 @@ static void ipmi_get_device_id(uint8_t addr)
 }
 
 SHELL_EXPORT_CMD(SHELL_CMD_PERMISSION(0)|SHELL_CMD_TYPE(SHELL_TYPE_CMD_FUNC), ipmi_get_device_id, ipmi_get_device_id, ipmi_get_device_id 8-bit addr);
+
+
 
